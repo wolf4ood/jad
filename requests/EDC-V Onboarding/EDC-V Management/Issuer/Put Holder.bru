@@ -1,0 +1,32 @@
+meta {
+  name: Put Holder
+  type: http
+  seq: 2
+}
+
+put {
+  url: {{issuerUrl}}/admin/participants/issuer/holders
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "createdAt": 1771928485451,
+    "participantContextId": "issuer",
+    "holderId": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
+    "did": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
+    "holderName": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
+    "anonymous": false,
+    "properties": {
+      "bpn": "BPNL01234567891j0",
+      "contractVersion": "1.0"
+    },
+    "lastModifiedAt": 1771928485451
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -37,7 +37,7 @@ spec:
       containers:
         - name: controlplane
           image: ghcr.io/eclipse-dataspace-hub/jad/controlplane:latest
-          imagePullPolicy: Always
+          imagePullPolicy: Never
           envFrom:
             - configMapRef: { name: controlplane-config }
             - configMapRef:
@@ -51,6 +51,8 @@ spec:
             - name: jwtlet-subject-token
               mountPath: /var/run/secrets/jwtlet
               readOnly: true
+            - name: jsonld-volume
+              mountPath: /app/jsonld
           ports:
             - containerPort: 8081
               name: management-port
@@ -87,6 +89,10 @@ spec:
                   path: token
                   audience: https://kubernetes.default.svc.cluster.local
                   expirationSeconds: 3600
+        - name: jsonld-volume
+          configMap:
+            name: controlplane-jsonld-contexts
+            defaultMode: 420
       restartPolicy: Always
 
 ---

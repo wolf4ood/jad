@@ -1,0 +1,48 @@
+meta {
+  name: Negotiatio Contract Tx
+  type: http
+  seq: 9
+}
+
+post {
+  url: {{txBaseUrl}}/v3/contractnegotiations
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2",
+      "https://w3id.org/catenax/2025/9/policy/context.jsonld",
+      "https://w3id.org/catenax/2025/9/policy/odrl.jsonld"
+    ],
+    "@type": "ContractRequest",
+    "protocol": "dataspace-protocol-http:2025-1",
+    "counterPartyAddress": "http://controlplane.edc-v.svc.cluster.local:8082/api/dsp/{{provider_context_id}}/cx-neptune",
+    "counterPartyId": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:provider",
+    "policy": {
+      "@id": "bWVtYmVyc2hpcF9jb250cmFjdF9kZWY=:Y2VydF9hc3NldA==:YTkyNWYzMDgtNGFmNi00MzNjLTg1MDMtYTQ4OGQ3Mjc4Mjlj",
+      "@type": "Offer",
+      "target": "cert_asset",
+      "assigner": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:provider",
+      "permission": [
+        {
+          "action": "use",
+          "constraint": [
+            {
+              "leftOperand": "Membership",
+              "operator": "eq",
+              "rightOperand": "active"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

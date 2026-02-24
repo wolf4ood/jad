@@ -1,0 +1,25 @@
+meta {
+  name: EDRs Get
+  type: http
+  seq: 17
+}
+
+get {
+  url: {{txBaseUrl}}/v3/edrs/44f0cdab-3b12-4f81-b2b9-9835f70dfab0/dataaddress
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2"
+    ],
+    "@type": "QuerySpec"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

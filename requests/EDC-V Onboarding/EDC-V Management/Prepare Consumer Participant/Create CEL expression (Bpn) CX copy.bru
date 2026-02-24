@@ -1,0 +1,34 @@
+meta {
+  name: Create CEL expression (Bpn) CX copy
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{cpBaseUrl}}/v5beta/celexpressions
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2"
+    ],
+    "@type": "CelExpression",
+    "@id": "{{CEL_EXPR_ID}}",
+    "leftOperand": "https://w3id.org/catenax/2025/9/policy/FrameworkAgreement",
+    "description": "Expression for evaluating bpn credential",
+    "scopes": [
+      "catalog",
+      "contract.negotiation",
+      "transfer.process"
+    ],
+    "expression": "ctx.agent.claims.vc.filter(c, c.type.exists(t, t == 'BpnCredential')).exists(c, c.credentialSubject.exists(cs, (cs.bpn == this.rightOperand || this.rightOperand.exists(bpn, cs.bpn == bpn ))))"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

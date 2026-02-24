@@ -1,0 +1,28 @@
+meta {
+  name: FetchCatalog
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{txBaseUrl}}/v3/catalog/request
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2"
+    ],
+    "@type": "CatalogRequest",
+    "protocol": "dataspace-protocol-http:2025-1",
+    "counterPartyAddress": "http://controlplane.edc-v.svc.cluster.local:8082/api/dsp/{{provider_context_id}}/cx-neptune",
+    "counterPartyId": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:provider"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

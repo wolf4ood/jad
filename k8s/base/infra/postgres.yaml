@@ -114,3 +114,10 @@ data:
     GRANT ALL PRIVILEGES ON DATABASE jwtlet TO jwtlet;
     \c jwtlet
     GRANT ALL ON SCHEMA public TO jwtlet;
+
+    CREATE DATABASE txconnectordb;
+    
+    CREATE USER txconnector WITH PASSWORD 'txconnector';
+    GRANT ALL PRIVILEGES ON DATABASE txconnectordb TO txconnector;
+    \c txconnectordb
+    GRANT ALL ON SCHEMA public TO txconnector;

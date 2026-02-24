@@ -1,0 +1,16 @@
+meta {
+  name: Get Policy
+  type: http
+  seq: 9
+}
+
+get {
+  url: {{cpBaseUrl}}/api/mgmt/v5alpha/participants/{{provider_id}}/policydefinitions/{{POLICY_DEF_ID}}
+  body: json
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

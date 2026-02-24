@@ -98,7 +98,7 @@ spec:
       containers:
         - name: siglet
           image: ghcr.io/eclipse-dataplane-core/dsdk-facet-rs/siglet:latest
-          imagePullPolicy: Always
+          imagePullPolicy: Never
           ports:
             - name: http
               containerPort: 8080
@@ -130,6 +130,8 @@ spec:
               value: "true"
             - name: SIGLET__TOKEN__ISSUER
               value: "siglet-issuer"
+            - name: SIGLET__TOKEN__SERVER_SECRET
+              value: "93d22865c1b0695d3caa1ac5ba648b88942aaeee3b05ba4aff2efc87e2cd1944"
             - name: SIGLET__TOKEN__REFRESH_ENDPOINT
               value: "http://siglet.edc-v.svc.cluster.local:8082/token/refresh"
           volumeMounts:

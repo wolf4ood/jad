@@ -1,0 +1,27 @@
+meta {
+  name: GetContractAgreement
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{cpBaseUrl}}/api/mgmt/v4alpha/participants/{{provider_id}}/contractagreements/request
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2",
+      "https://w3id.org/catenax/2025/9/policy/context.jsonld",
+      "https://w3id.org/catenax/2025/9/policy/odrl.jsonld"
+    ],
+    "@type": "QuerySpec"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

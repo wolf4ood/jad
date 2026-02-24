@@ -14,10 +14,16 @@ body:json {
   {
     "id": "{{$randomAlphaNumeric}}",
     "identifier": "{{participant_did}}",
-    "properties": {},
+     "properties": {
+      "key": "value"
+    },
     "cellId": "{{cell_id}}",
     "version": 0,
-    "vpaProperties": {}
+    "vpaProperties": {
+      "cfm.credentialservice": {
+        "key1": "value1"
+      }
+    }
   }
 }
 

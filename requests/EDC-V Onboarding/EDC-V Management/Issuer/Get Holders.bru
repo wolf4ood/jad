@@ -1,0 +1,22 @@
+meta {
+  name: Get Holders
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{issuerUrl}}/admin/participants/issuer/holders/query
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

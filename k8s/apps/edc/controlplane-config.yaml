@@ -76,7 +76,7 @@ data:
   edc.iam.dcp.scopes.manufacturer.type: "POLICY"
   edc.iam.dcp.scopes.manufacturer.value: "org.eclipse.dspace.dcp.vc.type:ManufacturerCredential:read"
   edc.iam.dcp.scopes.manufacturer.prefix-mapping: "ManufacturerCredential"
-  edc.dataspace.enable.profiles.all: "true"
+  #  edc.dataspace.enable.profiles.all: "true"
   # Trusted Issuers
   edc.iam.trusted-issuer.issuer.id: "did:web:issuerservice.edc-v.svc.cluster.local%3A10016:issuer"
 
@@ -87,3 +87,240 @@ data:
   edc.events.nats.create.force: "false"
 
   JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044"
+
+  edc.iam.dcp.scopes.bpn.id: "bpn-scope"
+  edc.iam.dcp.scopes.bpn.type: "DEFAULT"
+  edc.iam.dcp.scopes.bpn.value: "org.eclipse.dspace.dcp.vc.type:BpnCredential:read"
+
+  edc.iam.dcp.scopes.gov.id: "gov-scope"
+  edc.iam.dcp.scopes.gov.type: "DEFAULT"
+  edc.iam.dcp.scopes.gov.value: "org.eclipse.dspace.dcp.vc.type:DataExchangeGovernanceCredential:read"
+
+  edc.jsonld.document.tx-auth.url: "https://w3id.org/tractusx/auth/v1.0.0"
+  edc.jsonld.document.tx-auth.path: "/app/jsonld/tx-auth-v1.jsonld"
+  edc.jsonld.document.cx-policy.url: "https://w3id.org/catenax/2025/9/policy/context.jsonld"
+  edc.jsonld.document.cx-policy.path: "/app/jsonld/cx-policy-v1.jsonld"
+  edc.jsonld.document.cx-odrl.url: "https://w3id.org/catenax/2025/9/policy/odrl.jsonld"
+  edc.jsonld.document.cx-odrl.path: "/app/jsonld/cx-odrl.jsonld"
+
+  edc.jsonld.binding.cx-policy.namespace: "https://w3id.org/catenax/2025/9/policy/"
+  edc.jsonld.binding.cx-policy.context: "https://w3id.org/catenax/2025/9/policy/context.jsonld"
+
+  edc.dataspace.profiles.cxneptune.name: "cx-neptune"
+  edc.dataspace.profiles.cxneptune.protocol.version: "2025-1"
+  edc.dataspace.profiles.cxneptune.protocol.binding: "HTTPS"
+  edc.dataspace.profiles.cxneptune.protocol.namespace: "https://w3id.org/dspace/2025/1/"
+  edc.dataspace.profiles.cxneptune.jsonld.context.urls: "https://w3id.org/dspace/2025/1/context.jsonld,https://w3id.org/edc/dspace/v0.0.1,https://w3id.org/catenax/2025/9/policy/context.jsonld,https://w3id.org/catenax/2025/9/policy/odrl.jsonld"
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: controlplane-jsonld-contexts
+  namespace: edc-v
+data:
+  tx-auth-v1.jsonld: |
+    {
+      "@context": {
+        "@version": 1.1,
+        "@protected": true,
+        "tx-auth": "https://w3id.org/tractusx/auth/",
+        "refreshToken": "tx-auth:refreshToken",
+        "refreshEndpoint": "tx-auth:refreshEndpoint",
+        "refreshAudience": "tx-auth:refreshAudience",
+        "audience": "tx-auth:audience",
+        "expiresIn": "tx-auth:expiresIn"
+      }
+    }
+  cx-policy-v1.jsonld: |
+    {
+      "@context": {
+        "@version": 1.1,
+        "@protected": true,
+        "cred": "https://www.w3.org/2018/credentials#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "cx-policy": "https://w3id.org/catenax/2025/9/policy/",
+        "access": {
+          "@id": "cx-policy:access"
+        },
+        "AffiliatesBpnl": {
+          "@id": "cx-policy:AffiliatesBpnl"
+        },
+        "AffiliatesRegion": {
+          "@id": "cx-policy:AffiliatesRegion"
+        },
+        "BusinessPartnerGroup": {
+          "@id": "cx-policy:BusinessPartnerGroup"
+        },
+        "BusinessPartnerNumber": {
+          "@id": "cx-policy:BusinessPartnerNumber"
+        },
+        "ConfidentialInformationMeasures": {
+          "@id": "cx-policy:ConfidentialInformationMeasures"
+        },
+        "ConfidentialInformationSharing": {
+          "@id": "cx-policy:ConfidentialInformationSharing"
+        },
+        "ContractReference": {
+          "@id": "cx-policy:ContractReference"
+        },
+        "ContractTermination": {
+          "@id": "cx-policy:ContractTermination"
+        },
+        "DataFrequency": {
+          "@id": "cx-policy:DataFrequency"
+        },
+        "DataProvisioningEndDate": {
+          "@id": "cx-policy:DataProvisioningEndDate"
+        },
+        "DataProvisioningEndDurationDays": {
+          "@id": "cx-policy:DataProvisioningEndDurationDays"
+        },
+        "DataUsageEndDate": {
+          "@id": "cx-policy:DataUsageEndDate"
+        },
+        "DataUsageEndDurationDays": {
+          "@id": "cx-policy:DataUsageEndDurationDays"
+        },
+        "DataUsageEndDefinition": {
+          "@id": "cx-policy:DataUsageEndDefinition"
+        },
+        "ExclusiveUsage": {
+          "@id": "cx-policy:ExclusiveUsage"
+        },
+        "FrameworkAgreement": {
+          "@id": "cx-policy:FrameworkAgreement"
+        },
+        "JurisdictionLocation": {
+          "@id": "cx-policy:JurisdictionLocation"
+        },
+        "JurisdictionLocationReference": {
+          "@id": "cx-policy:JurisdictionLocationReference"
+        },
+        "Liability": {
+          "@id": "cx-policy:Liability"
+        },
+        "Membership": {
+          "@id": "cx-policy:Membership"
+        },
+        "Precedence": {
+          "@id": "cx-policy:Precedence"
+        },
+        "UsagePurpose": {
+          "@id": "cx-policy:UsagePurpose"
+        },
+        "UsageRestriction": {
+          "@id": "cx-policy:UsageRestriction"
+        },
+        "VersionChanges": {
+          "@id": "cx-policy:VersionChanges"
+        },
+        "Warranty": {
+          "@id": "cx-policy:Warranty"
+        },
+        "WarrantyDurationMonths": {
+          "@id": "cx-policy:WarrantyDurationMonths"
+        },
+        "WarrantyDefinition": {
+          "@id": "cx-policy:WarrantyDefinition"
+        }
+      }
+    }
+  cx-odrl.jsonld: |
+    {
+      "@context": {
+        "odrl": "http://www.w3.org/ns/odrl/2/",
+        "Policy": "odrl:Policy",
+        "Rule": "odrl:Rule",
+        "profile": {
+          "@type": "@id",
+          "@id": "odrl:profile"
+        },
+        "prohibit": "odrl:prohibit",
+        "Agreement": "odrl:Agreement",
+        "Assertion": "odrl:Assertion",
+        "Offer": "odrl:Offer",
+        "Set": "odrl:Set",
+        "Asset": "odrl:Asset",
+        "hasPolicy": {
+          "@type": "@id",
+          "@id": "odrl:hasPolicy"
+        },
+        "target": {
+          "@type": "@id",
+          "@id": "odrl:target"
+        },
+        "assignee": {
+          "@type": "@id",
+          "@id": "odrl:assignee"
+        },
+        "assigner": {
+          "@type": "@id",
+          "@id": "odrl:assigner"
+        },
+        "Action": "odrl:Action",
+        "action": {
+          "@type": "@vocab",
+          "@id": "odrl:action"
+        },
+        "Permission": "odrl:Permission",
+        "permission": {
+          "@type": "@id",
+          "@id": "odrl:permission",
+          "@container": "@set"
+        },
+        "Prohibition": "odrl:Prohibition",
+        "prohibition": {
+          "@type": "@id",
+          "@id": "odrl:prohibition",
+          "@container": "@set"
+        },
+        "obligation": {
+          "@type": "@id",
+          "@id": "odrl:obligation",
+          "@container": "@set"
+        },
+        "use": "odrl:use",
+        "Duty": "odrl:Duty",
+        "duty": {
+          "@type": "@id",
+          "@id": "odrl:duty",
+          "@container": "@set"
+        },
+        "Constraint": "odrl:Constraint",
+        "constraint": {
+          "@type": "@id",
+          "@id": "odrl:constraint",
+          "@container": "@set"
+        },
+        "Operator": "odrl:Operator",
+        "operator": {
+          "@type": "@vocab",
+          "@id": "odrl:operator"
+        },
+        "RightOperand": "odrl:RightOperand",
+        "rightOperand": "odrl:rightOperand",
+        "LeftOperand": "odrl:LeftOperand",
+        "leftOperand": {
+          "@type": "@vocab",
+          "@id": "odrl:leftOperand"
+        },
+        "eq": "odrl:eq",
+        "gt": "odrl:gt",
+        "gteq": "odrl:gteq",
+        "lt": "odrl:lt",
+        "lteq": "odrl:lteq",
+        "neq": "odrl:neq",
+        "isA": "odrl:isA",
+        "hasPart": "odrl:hasPart",
+        "isPartOf": "odrl:isPartOf",
+        "isAllOf": "odrl:isAllOf",
+        "isAnyOf": "odrl:isAnyOf",
+        "isNoneOf": "odrl:isNoneOf",
+        "or": "odrl:or",
+        "xone": "odrl:xone",
+        "and": "odrl:and",
+        "andSequence": "odrl:andSequence"
+      }
+    }

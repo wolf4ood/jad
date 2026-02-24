@@ -1,0 +1,16 @@
+meta {
+  name: Get Negotiation Contract
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{cpBaseUrl}}/api/mgmt/v4alpha/participants/{{consumer_id}}/contractnegotiations/13838b7a-8682-43f3-8be9-9103469811d3
+  body: json
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

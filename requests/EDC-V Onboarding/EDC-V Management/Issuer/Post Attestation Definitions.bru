@@ -1,0 +1,27 @@
+meta {
+  name: Post Attestation Definitions
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{issuerUrl}}/admin/participants/issuer/attestations
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "id": "holder-attestation-def-1",
+    "createdAt": 1771838547356,
+    "participantContextId": "issuer",
+    "attestationType": "holder",
+    "configuration": {},
+    "lastModifiedAt": 1771838547356
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

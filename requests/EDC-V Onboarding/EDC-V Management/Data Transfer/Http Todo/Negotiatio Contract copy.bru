@@ -1,0 +1,53 @@
+meta {
+  name: Negotiatio Contract copy
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{cpBaseUrl}}/v5beta/participants/{{consumer_id}}/contractnegotiations
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2",
+      "https://w3id.org/catenax/2025/9/policy/context.jsonld",
+      "https://w3id.org/catenax/2025/9/policy/odrl.jsonld"
+    ],
+    "@type": "ContractRequest",
+    "protocol": "http-dsp-profile-2025-1",
+    "counterPartyAddress": "http://tx-connector.edc-v.svc.cluster.local:8082/api/dsp/2025-1",
+    "counterPartyId": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
+    "policy": {
+      "@id": "bWVtYmVyc2hpcF9jb250cmFjdF9kZWY=:dG9kb19hc3NldA==:ZGU2YzFlNGUtNDY4Mi00NDJjLWJmNmQtMzFkNWQyNjBlZDkx",
+      "@type": "Offer",
+      "target": "todo_asset",
+      "assigner": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
+      "permission": [
+        {
+          "action": "access",
+          "constraint": [
+            {
+              "and": [
+                {
+                  "leftOperand": "Membership",
+                  "operator": "eq",
+                  "rightOperand": "active"
+                }
+              ]
+            }
+          ]
+        ]
+      }
+    ]
+  }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

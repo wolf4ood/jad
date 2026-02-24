@@ -1,0 +1,25 @@
+meta {
+  name: Negotiations Query
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{txBaseUrl}}/api/mgmt/v3/contractnegotiations/request
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2"
+    ],
+    "@type": "QuerySpec"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

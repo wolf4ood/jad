@@ -1,0 +1,41 @@
+#
+# Copyright (c) 2025 Metaform Systems, Inc.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License, Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# Contributors:
+#      Metaform Systems, Inc. - initial API and implementation
+#
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tx-bdrs-config
+  namespace: edc-v
+data:
+  # base config
+  edc.hostname: "tx-bdrs.edc-v.svc.cluster.local"
+  edc.vault.hashicorp.url: "http://vault.edc-v.svc.cluster.local:8200"
+  edc.vault.hashicorp.token: "root"
+
+
+  edc.iam.issuer.id: "did:web:identityhub.edc-v.svc.cluster.local%3A7083:bdrs"
+  edc.iam.did.web.use.https: "false"
+  edc.iam.credential.revocation.mimetype: "application/json"
+
+  web.http.management.port: "8082"
+  web.http.management.path: "/api/mgmt"
+
+  web.http.directory.port: "8083"
+  web.http.directory.path: "/api/directory"
+
+  # TX config
+  edc.iam.trusted-issuer.issuer.id: "did:web:issuerservice.edc-v.svc.cluster.local%3A10016:issuer"
+
+  OTEL_JAVAAGENT_ENABLED: "false"
+  JAVA_TOOL_OPTIONS: "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=1044"

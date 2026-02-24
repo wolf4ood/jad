@@ -1,0 +1,34 @@
+meta {
+  name: Create CEL expression (DataGov) CX
+  type: http
+  seq: 8
+}
+
+put {
+  url: {{cpBaseUrl}}/api/mgmt/v4alpha/celexpressions/{{CEL_EXPR_ID}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2"
+    ],
+    "@type": "CelExpression",
+    "@id": "{{CEL_EXPR_ID}}",
+    "leftOperand": "https://w3id.org/catenax/2025/9/policy/FrameworkAgreement",
+    "description": "Expression for evaluating data gov credential",
+    "scopes": [
+      "catalog",
+      "contract.negotiation",
+      "transfer.process"
+    ],
+    "expression": "ctx.agent.claims.vc.filter(c, c.type.exists(t, t == 'DataExchangeGovernanceCredential')).exists(c, c.credentialSubject.exists(cs, 'DataExchangeGovernance:' + cs.contractVersion == this.rightOperand))"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

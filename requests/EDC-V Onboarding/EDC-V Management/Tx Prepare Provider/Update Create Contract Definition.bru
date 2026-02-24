@@ -1,0 +1,36 @@
+meta {
+  name: Update Create Contract Definition
+  type: http
+  seq: 14
+}
+
+put {
+  url: {{txBaseUrl}}/api/mgmt/v4beta/contractdefinitions
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2"
+    ],
+    "@type": "ContractDefinition",
+    "@id": "{{CONTRACT_DEF_ID}}",
+    "accessPolicyId": "{{POLICY_DEF_ID}}",
+    "contractPolicyId": "complex-policy",
+    "assetsSelector": [
+      {
+        "@type": "Criterion",
+        "operandLeft": "privateProperties.'https://w3id.org/edc/v0.0.1/ns/permission'",
+        "operator" : "=",
+        "operandRight" : "{{ASSET_PERMISSION}}"
+      }
+    ]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

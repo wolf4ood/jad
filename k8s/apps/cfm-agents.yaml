@@ -119,4 +119,7 @@ spec:
         - name: onboarding-agent-config
           configMap:
             name: ob-agent-config
+        - name: ih-keyrotate-agent-config
+          configMap:
+            name: ih-keyrotate-agent-config
       restartPolicy: Always

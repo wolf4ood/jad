@@ -133,6 +133,17 @@ spec:
               }
               EOF
 
+              # Allow participants access to transit keys prefixed with their context ID
+              cat <<EOF | vault policy write participant-transit-policy - || { echo "Failed to write participant transit policy"; exit 1; }
+              path "transit/keys/participant_{{identity.entity.aliases.${ACCESSOR}.name}}*" {
+                  capabilities = ["read", "create", "update", "delete", "list"]
+              }
+
+              path "transit/sign/participant_{{identity.entity.aliases.${ACCESSOR}.name}}*" {
+                  capabilities = ["create", "update"]
+              }
+              EOF
+
               vault write auth/jwt/role/participant -<<EOF || { echo "Failed to create JWT role"; exit 1; }
               {
                 "role_type": "jwt",
@@ -141,7 +152,7 @@ spec:
                 "bound_claims": {
                   "role": "participant"
                 },
-                "token_policies": ["participants-restricted"],
+                "token_policies": ["participants-restricted", "participant-transit-policy"],
                 "clock_skew_leeway": 60
               }
               EOF

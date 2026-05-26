@@ -12,6 +12,15 @@
 #
 
 resources:
-  - edc/
-  - cfm/
-  - ui/
+  - cfm-agents.yaml
+  - edcv-agent-config.yaml
+  - ih-agent-config.yaml
+  - keycloak-agent-config.yaml
+  - onboarding-agent-config.yaml
+  - registration-agent-config.yaml
+  - provision-manager.yaml
+  - provision-manager-config.yaml
+  - provision-manager-seed-job.yaml
+  - tenant-manager.yaml
+  - tenant-manager-config.yaml
+  - tenant-manager-seed-job.yaml

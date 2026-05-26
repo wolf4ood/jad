@@ -25,3 +25,4 @@ resources:
   - loki.yaml
   - prometheus.yaml
   - grafana.yaml
+  - telemetry-config.yaml

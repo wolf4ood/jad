@@ -12,6 +12,14 @@
 #
 
 resources:
-  - edc/
-  - cfm/
-  - ui/
+  - controlplane-config.yaml
+  - controlplane.yaml
+  - dataplane-config.yaml
+  - dataplane.yaml
+  - issuerservice-config.yaml
+  - issuerservice.yaml
+  - issuerservice-seed-job.yaml
+  - identityhub-config.yaml
+  - identityhub.yaml
+  - siglet-config.yaml
+  - siglet.yaml

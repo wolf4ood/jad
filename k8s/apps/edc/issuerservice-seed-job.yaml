@@ -188,7 +188,7 @@ spec:
                   "did": "did:web:issuerservice.edc-v.svc.cluster.local%3A10016:issuer",
                   "key": {
                     "keyId": "did:web:issuerservice.edc-v.svc.cluster.local%3A10016:issuer#key-1",
-                    "privateKeyAlias": "did:web:issuerservice.edc-v.svc.cluster.local%3A10016:issuer#key-1",
+                    "privateKeyAlias": "key-1",
                     "keyGeneratorParams": {
                       "algorithm": "EdDSA"
                     }

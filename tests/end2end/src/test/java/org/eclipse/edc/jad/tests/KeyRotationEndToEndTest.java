@@ -149,7 +149,6 @@ public class KeyRotationEndToEndTest {
 
         // no need to obtain the secret, we already have it
         // query the keypair resources next
-
         var keypairs = participantRequest()
                 .baseUri(Constants.IDENTITYHUB_BASE_URL)
                 .get("/participants/%s/keypairs".formatted(participantCredentials.clientId()))

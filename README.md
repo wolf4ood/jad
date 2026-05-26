@@ -428,9 +428,9 @@ unauthenticated at the gateway level.
 | Service             | Exposed path        | Rewrites to             | Backend port | Auth middleware                        |
 |---------------------|---------------------|-------------------------|--------------|----------------------------------------|
 | Control Plane       | `/api/management`   | `/api/mgmt`             | `8081`       | `jwt-auth-management-api`              |
-| Identity Hub        | `/api/identity`     | `/api/identity/v1alpha` | `7081`       | `jwt-auth-identity-api`                |
-| Issuer Service      | `/api/issuer/admin` | `/api/admin/v1alpha`    | `10013`      | `jwt-auth-issuer-admin-api`            |
-| Provision Manager   | `/api/pm`           | `/api/v1alpha`          | `8080`       | `jwt-auth-provision-manager-api`       |
+| Identity Hub        | `/api/identity`     | `/api/identity/v1beta` | `7081`       | `jwt-auth-identity-api`                |
+| Issuer Service      | `/api/issuer/admin` | `/api/admin/v1beta`    | `10013`      | `jwt-auth-issuer-admin-api`            |
+| Provision Manager   | `/api/pm`           | `/api/v1beta`          | `8080`       | `jwt-auth-provision-manager-api`       |
 | Tenant Manager      | `/api/tm`           | `/api/v1alpha1`         | `8080`       | `jwt-auth-tenant-manager-api`          |
 | Dataplane (public)  | `/api/dp/public`    | `/`                     | `11002`      | —                                      |
 | Dataplane (control) | `/api/dp/control`   | `/`                     | `8083`       | —                                      |

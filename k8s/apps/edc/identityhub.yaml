@@ -129,7 +129,7 @@ spec:
           urlRewrite:
             path:
               type: ReplacePrefixMatch
-              replacePrefixMatch: /api/identity/v1alpha
+              replacePrefixMatch: /api/identity/v1beta
         - type: ExtensionRef
           extensionRef:
             group: traefik.io

@@ -128,7 +128,7 @@ spec:
           urlRewrite:
             path:
               type: ReplacePrefixMatch
-              replacePrefixMatch: /api/admin/v1alpha
+              replacePrefixMatch: /api/admin/v1beta
         - type: ExtensionRef
           extensionRef:
             group: traefik.io

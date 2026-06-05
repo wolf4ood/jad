@@ -80,6 +80,8 @@ spec:
               value: "/vault/secrets/.vault-token"
             - name: SIGLET__VAULT__SIGNING_KEY_NAME
               value: "signing-siglet"
+            - name: SIGLET__VAULT__USE_HTTP_RESOLUTION
+              value: "true"
             - name: SIGLET__TOKEN__ISSUER
               value: "siglet-issuer"
             - name: SIGLET__TOKEN__REFRESH_ENDPOINT

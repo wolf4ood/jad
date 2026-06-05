@@ -19,7 +19,8 @@ metadata:
   namespace: edc-v
 data:
   siglet.toml: |
-    token_server_secret = "93d22865c1b0695d3caa1ac5ba648b88942aaeee3b05ba4aff2efc87e2cd1944"
+    [token]
+    server_secret = "93d22865c1b0695d3caa1ac5ba648b88942aaeee3b05ba4aff2efc87e2cd1944"
     [storage_backend]
     type = "postgres-vault"
     url = "postgresql://siglet:siglet@postgres:5432/sigletdb"

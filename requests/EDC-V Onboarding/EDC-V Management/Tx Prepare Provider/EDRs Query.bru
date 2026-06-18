@@ -4,8 +4,8 @@ meta {
   seq: 12
 }
 
-get {
-  url: {{txBaseUrl}}/v3/edrs
+post {
+  url: {{txBaseUrl}}/v3/edrs/request
   body: json
   auth: inherit
 }

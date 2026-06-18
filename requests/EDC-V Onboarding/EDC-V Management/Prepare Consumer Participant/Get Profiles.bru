@@ -1,11 +1,11 @@
 meta {
-  name: Get CEL expression
+  name: Get Profiles
   type: http
-  seq: 3
+  seq: 13
 }
 
 get {
-  url: {{cpBaseUrl}}/v5beta/celexpressions/{{CEL_EXPR_ID}}
+  url: {{cpBaseUrl}}/v5beta/participants/{{consumer_id}}/profiles
   body: json
   auth: inherit
 }

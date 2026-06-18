@@ -18,17 +18,17 @@ body:json {
       "https://w3id.org/catenax/2025/9/policy/odrl.jsonld"
     ],
     "@type": "ContractRequest",
-    "protocol": "http-dsp-profile-2025-1",
+    "protocol": "cx-neptune",
     "counterPartyAddress": "http://tx-connector.edc-v.svc.cluster.local:8082/api/dsp/2025-1",
     "counterPartyId": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
     "policy": {
-      "@id": "bWVtYmVyc2hpcF9jb250cmFjdF9kZWY=:dG9kb19hc3NldA==:ZGU2YzFlNGUtNDY4Mi00NDJjLWJmNmQtMzFkNWQyNjBlZDkx",
+      "@id": "bWVtYmVyc2hpcF9jb250cmFjdF9kZWY=:dG9kb19hc3NldA==:NjUwNjRjMGYtODFhMS00MGM4LWE5MTMtOWUyYTYxMjgzOTYz",
       "@type": "Offer",
       "target": "todo_asset",
       "assigner": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
       "permission": [
         {
-          "action": "access",
+          "action": "use",
           "constraint": [
             {
               "and": [
@@ -36,14 +36,23 @@ body:json {
                   "leftOperand": "Membership",
                   "operator": "eq",
                   "rightOperand": "active"
+                },
+                {
+                  "leftOperand": "FrameworkAgreement",
+                  "operator": "eq",
+                  "rightOperand": "DataExchangeGovernance:1.0"
+                },
+                {
+                  "leftOperand": "UsagePurpose",
+                  "operator": "isAnyOf",
+                  "rightOperand": "cx.core.industrycore:1"
                 }
               ]
             }
           ]
-        ]
-      }
-    ]
-  }
+        }
+      ]
+    }
   }
 }
 

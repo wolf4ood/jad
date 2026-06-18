@@ -1,11 +1,11 @@
 meta {
-  name: GetContractAgreement
+  name: List Transfer Processes
   type: http
-  seq: 6
+  seq: 9
 }
 
 post {
-  url: {{cpBaseUrl}}/v5beta/participants/{{consumer_id}}/contractagreements/request
+  url: {{cpBaseUrl}}/v5beta/participants/{{consumer_id}}/transferprocesses/request
   body: json
   auth: inherit
 }

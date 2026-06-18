@@ -1,11 +1,11 @@
 meta {
-  name: Negotiations Query
+  name: Patch Profiles copy
   type: http
-  seq: 10
+  seq: 12
 }
 
-post {
-  url: {{txBaseUrl}}/v3/contractnegotiations/request
+put {
+  url: {{cpBaseUrl}}/v5beta/participants/{{consumer_id}}/profiles
   body: json
   auth: inherit
 }
@@ -15,7 +15,8 @@ body:json {
     "@context": [
       "https://w3id.org/edc/connector/management/v2"
     ],
-    "@type": "QuerySpec"
+    "@type": "AssociateDataspaceProfile",
+    "profiles": ["cx-neptune"]
   }
 }
 

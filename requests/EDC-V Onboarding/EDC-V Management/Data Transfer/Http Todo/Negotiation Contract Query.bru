@@ -17,32 +17,7 @@ body:json {
       "https://w3id.org/catenax/2025/9/policy/context.jsonld",
       "https://w3id.org/catenax/2025/9/policy/odrl.jsonld"
     ],
-    "@type": "QuerySpec",
-    "protocol": "dataspace-protocol-http:2025-1",
-    "counterPartyAddress": "http://tx-connector.edc-v.svc.cluster.local:8082/api/dsp/2025-1",
-    "counterPartyId": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
-    "policy": {
-      "@id": "bWVtYmVyc2hpcF9jb250cmFjdF9kZWY=:dG9kb19hc3NldA==:ZmE5ZDVlOGQtNzY1MC00OTMzLWI0NWQtMjQ3YTA0Nzg5MjFi",
-      "@type": "Offer",
-      "target": "todo_asset",
-      "assigner": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
-      "permission": [
-        {
-          "action": "access",
-          "constraint": [
-            {
-              "and": [
-                {
-                  "leftOperand": "Membership",
-                  "operator": "eq",
-                  "rightOperand": "active"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
+    "@type": "QuerySpec"
   }
 }
 

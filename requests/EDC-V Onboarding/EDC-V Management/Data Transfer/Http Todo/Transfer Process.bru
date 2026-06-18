@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{cpBaseUrl}}/api/mgmt/v4alpha/participants/{{consumer_id}}/transferprocesses
+  url: {{cpBaseUrl}}/v5beta/participants/{{consumer_id}}/transferprocesses
   body: json
   auth: inherit
 }
@@ -18,10 +18,10 @@ body:json {
       "https://w3id.org/catenax/2025/9/policy/odrl.jsonld"
     ],
     "@type": "TransferRequest",
-    "protocol": "dataspace-protocol-http:2025-1",
+    "protocol": "cx-neptune",
     "counterPartyAddress": "http://tx-connector.edc-v.svc.cluster.local:8082/api/dsp/2025-1",
     "counterPartyId": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
-    "contractId": "752037df-7ce3-4e6c-a324-a469d7bb780f",
+    "contractId": "23e53a17-1ab7-4f0d-9223-5b0d618543d1",
     "transferType": "HttpData-PULL"
   }
 }

@@ -1,0 +1,16 @@
+meta {
+  name: EDRs Refresh
+  type: http
+  seq: 18
+}
+
+post {
+  url: {{txBaseUrl}}/v3/edrs/ca0f9545-507b-448f-a187-5fc7b31a5ec8/refresh
+  body: json
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

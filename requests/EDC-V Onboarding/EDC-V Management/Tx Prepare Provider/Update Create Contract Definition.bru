@@ -5,7 +5,7 @@ meta {
 }
 
 put {
-  url: {{txBaseUrl}}/api/mgmt/v4beta/contractdefinitions
+  url: {{txBaseUrl}}/v4beta/contractdefinitions
   body: json
   auth: inherit
 }
@@ -17,8 +17,8 @@ body:json {
     ],
     "@type": "ContractDefinition",
     "@id": "{{CONTRACT_DEF_ID}}",
-    "accessPolicyId": "{{POLICY_DEF_ID}}",
-    "contractPolicyId": "complex-policy",
+    "accessPolicyId": "access_policy",
+    "contractPolicyId": "{{POLICY_DEF_ID}}",
     "assetsSelector": [
       {
         "@type": "Criterion",

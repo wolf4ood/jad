@@ -5,7 +5,7 @@ meta {
 }
 
 put {
-  url: {{txBaseUrl}}/api/mgmt/v3/policydefinitions/membership_policy
+  url: {{txBaseUrl}}/v3/policydefinitions/membership_policy
   body: json
   auth: inherit
 }
@@ -23,15 +23,25 @@ body:json {
       "@type": "Set",
       "permission": [
         {
-          "action": "access",
+          "action": "use",
           "constraint": [
             {
-              "leftOperand": "BusinessPartnerNumber",
-              "operator": "isAnyOf",
-              "rightOperand": [
-                "BPNL012345678910",
-                "BPNL012345678911",
-                "BPNL012345678912"
+              "and": [
+                {
+                  "leftOperand": "Membership",
+                  "operator": "eq",
+                  "rightOperand": "active"
+                },
+                {
+                  "leftOperand": "FrameworkAgreement",
+                  "operator": "eq",
+                  "rightOperand": "DataExchangeGovernance:1.0"
+                },
+                {
+                  "leftOperand": "UsagePurpose",
+                  "operator": "isAnyOf",
+                  "rightOperand": "cx.core.industrycore:1"
+                }
               ]
             }
           ]

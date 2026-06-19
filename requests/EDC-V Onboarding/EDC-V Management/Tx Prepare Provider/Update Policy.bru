@@ -21,17 +21,13 @@ body:json {
     "@id": "{{POLICY_DEF_ID}}",
     "policy": {
       "@type": "Set",
+      "@id": "some-id",
       "permission": [
         {
           "action": "use",
           "constraint": [
             {
               "and": [
-                {
-                  "leftOperand": "Membership",
-                  "operator": "eq",
-                  "rightOperand": "active"
-                },
                 {
                   "leftOperand": "FrameworkAgreement",
                   "operator": "eq",
@@ -40,7 +36,10 @@ body:json {
                 {
                   "leftOperand": "UsagePurpose",
                   "operator": "isAnyOf",
-                  "rightOperand": "cx.core.industrycore:1"
+                  "rightOperand": [
+                    "cx.core.digitalTwinRegistry:1",
+                    "cx.pcf.base:1"
+                  ]
                 }
               ]
             }

@@ -5,15 +5,15 @@ meta {
 }
 
 post {
-  url: {{bdrsBaseUrl}}/api/mgmt/bpn-directory
+  url: {{bdrsBaseUrl}}/bpn-directory
   body: json
   auth: inherit
 }
 
 body:json {
   {
-    "did": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:consumer-Mrs.",
-    "bpn":"BPNL012345678912"
+    "did": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:consumer",
+    "bpn":"BPNL01234567891j1"
   }
 }
 

@@ -16,3 +16,5 @@ resources:
   - tx-connector-config.yaml
   - tx-bdrs.yaml
   - tx-bdrs-config.yaml
+  - tx-dataplane.yaml
+  - tx-dataplane-config.yaml

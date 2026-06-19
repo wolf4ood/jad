@@ -121,3 +121,9 @@ data:
     GRANT ALL PRIVILEGES ON DATABASE txconnectordb TO txconnector;
     \c txconnectordb
     GRANT ALL ON SCHEMA public TO txconnector;
+    
+    CREATE DATABASE txdataplanedb;
+
+    GRANT ALL PRIVILEGES ON DATABASE txdataplanedb TO txconnector;
+    \c txdataplanedb
+    GRANT ALL ON SCHEMA public TO txconnector;

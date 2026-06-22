@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{cpBaseUrl}}/api/mgmt/v5alpha/celexpressions
+  url: {{cpBaseUrl}}/v5beta/celexpressions
   body: json
   auth: inherit
 }
@@ -16,7 +16,7 @@ body:json {
       "https://w3id.org/edc/connector/management/v2"
     ],
     "@type": "CelExpression",
-    "@id": "{{CEL_EXPR_ID}}_3",
+    "@id": "{{CEL_EXPR_ID}}_4",
     "leftOperand": "https://w3id.org/catenax/2025/9/policy/UsagePurpose",
     "description": "Expression for evaluating usage purpose",
     "scopes": [

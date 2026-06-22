@@ -1,7 +1,7 @@
 meta {
   name: Query KeyPairResource from IdentityHub
   type: http
-  seq: 6
+  seq: 3
 }
 
 get {
@@ -19,7 +19,6 @@ auth:oauth2 {
   scope: identity-api:read identity-api:write
   credentials_placement: body
   credentials_id: participant_credentials
-  token_source: access_token
   token_placement: header
   token_header_prefix: Bearer
   auto_fetch_token: true

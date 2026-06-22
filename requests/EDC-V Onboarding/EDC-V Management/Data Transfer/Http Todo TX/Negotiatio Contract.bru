@@ -1,7 +1,7 @@
 meta {
   name: Negotiatio Contract
   type: http
-  seq: 4
+  seq: 3
 }
 
 post {
@@ -18,11 +18,11 @@ body:json {
       "https://w3id.org/catenax/2025/9/policy/odrl.jsonld"
     ],
     "@type": "ContractRequest",
-    "protocol": "dataspace-protocol-http:2025-1",
+    "protocol": "cx-neptune",
     "counterPartyAddress": "http://tx-connector.edc-v.svc.cluster.local:8082/api/dsp/2025-1",
     "counterPartyId": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
     "policy": {
-      "@id": "bWVtYmVyc2hpcF9jb250cmFjdF9kZWY=:dG9kb19hc3NldA==:ZGU2YzFlNGUtNDY4Mi00NDJjLWJmNmQtMzFkNWQyNjBlZDkx",
+      "@id": "bWVtYmVyc2hpcF9jb250cmFjdF9kZWY=:dG9kb19hc3NldA==:Y2E0ZTE3NGQtNDgwMy00YjgzLWExOGItZTJjZTY4ZjAzMmRj",
       "@type": "Offer",
       "target": "todo_asset",
       "assigner": "did:web:identityhub.edc-v.svc.cluster.local%3A7083:tx",
@@ -40,18 +40,15 @@ body:json {
                 {
                   "leftOperand": "UsagePurpose",
                   "operator": "isAnyOf",
-                  "rightOperand": "[{@value={valueType=STRING, chars=cx.core.digitalTwinRegistry:1, string=cx.core.digitalTwinRegistry:1}}, {@value={valueType=STRING, chars=cx.pcf.base:1, string=cx.pcf.base:1}}, {@value={valueType=STRING, chars=cx.circular.dpp:1, string=cx.circular.dpp:1}}]"
-                },
-                {
-                  "leftOperand": "Membership",
-                  "operator": "eq",
-                  "rightOperand": "active"
+                  "rightOperand": "cx.core.industrycore:1"
                 }
               ]
             }
           ]
         }
-      }
+      ]
+    }
+  }
 }
 
 settings {

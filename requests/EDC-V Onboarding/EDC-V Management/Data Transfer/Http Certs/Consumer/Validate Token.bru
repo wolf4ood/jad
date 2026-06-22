@@ -1,0 +1,42 @@
+meta {
+  name: Validate Token
+  type: http
+  seq: 8
+}
+
+post {
+  url: {{sigletBaseUrl}}/tokens/verify
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "token": "eyJhbGciOiJFZERTQSIsImtpZCI6InNpZ2xldC1pc3N1ZXIjc2lnbmluZy1zaWdsZXQtMSIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6d2ViOmlkZW50aXR5aHViLmVkYy12LnN2Yy5jbHVzdGVyLmxvY2FsJTNBNzA4Mzp0eCIsImlzcyI6InNpZ2xldC1pc3N1ZXIiLCJhdWQiOiJkaWQ6d2ViOmlkZW50aXR5aHViLmVkYy12LnN2Yy5jbHVzdGVyLmxvY2FsJTNBNzA4Mzpwcm92aWRlciIsImlhdCI6MTc4MjExNjE3NSwiZXhwIjoxNzgyMTE5Nzc1LCJhZ3JlZW1lbnRJZCI6IjNlMGI5OTEyLTk4NzgtNGFmNC05ODc4LTNhMmIyY2NkYjY2YyIsImNvdW50ZXJQYXJ0eUlkIjoiZGlkOndlYjppZGVudGl0eWh1Yi5lZGMtdi5zdmMuY2x1c3Rlci5sb2NhbCUzQTcwODM6dHgiLCJkYXRhc2V0SWQiOiJjZXJ0X2Fzc2V0IiwianRpIjoiZjVmZTdmYzUtNGQ2MC00M2IzLWEzZmUtYjE4ZDdiNTYwN2JlIiwicGFydGljaXBhbnRJZCI6ImRpZDp3ZWI6aWRlbnRpdHlodWIuZWRjLXYuc3ZjLmNsdXN0ZXIubG9jYWwlM0E3MDgzOnByb3ZpZGVyIn0.YI4AlXgD7-B9i39ILyXjngxL6yc4UIyEi24T_RErmvdNweujP_vq0D5ia5WwkwlysCvmT4YxAIfnOe-W4RSYDA",
+    "audience": "test"
+  }
+}
+
+script:post-response {
+  try {
+      const json = res.getBody();
+      const accessToken = json['token'];
+    
+      if (accessToken && typeof accessToken === 'string') {
+          bru.setVar('ACCESS_TOKEN', accessToken);
+      } else {
+          console.warn('Access Token not found');
+      }
+  
+  } catch (e) {
+      console.error('Failed to parse response or set Access Token:', e);
+      test('Response is valid JSON', function () {
+          throw e;
+      });
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

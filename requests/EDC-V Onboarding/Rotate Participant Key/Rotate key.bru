@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: {{identityHubUrl}}/participants/{{participantContextId}}/keypairs/{{active_key_id}}/rotate
+  url: {{identityHubUrl}}/participants/{{tx_provider_context_id}}/keypairs/{{active_key_id}}/rotate
   body: json
   auth: inherit
 }
@@ -16,7 +16,7 @@ body:json {
       "algorithm": "eddsa",
       "curve": "ed25519"    
     },
-    "keyId": "{{participantIdentifier}}#{{$randomUUID}}",
+    "keyId": "{{tx_provider_context_id}}#{{$randomUUID}}",
     "privateKeyAlias": "{{$randomUUID}}" 
   }
   

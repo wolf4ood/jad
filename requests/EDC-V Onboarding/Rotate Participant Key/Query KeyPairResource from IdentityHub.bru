@@ -5,24 +5,9 @@ meta {
 }
 
 get {
-  url: {{identityHubUrl}}/participants/{{participantContextId}}/keypairs
+  url: {{identityHubUrl}}/participants/{{tx_provider_context_id}}/keypairs
   body: json
-  auth: oauth2
-}
-
-auth:oauth2 {
-  grant_type: client_credentials
-  access_token_url: http://jad.localhost/auth/realms/edcv/protocol/openid-connect/token
-  refresh_token_url: 
-  client_id: {{participantContextId}}
-  client_secret: {{participant_secret}}
-  scope: identity-api:read identity-api:write
-  credentials_placement: body
-  credentials_id: participant_credentials
-  token_placement: header
-  token_header_prefix: Bearer
-  auto_fetch_token: true
-  auto_refresh_token: false
+  auth: inherit
 }
 
 script:post-response {

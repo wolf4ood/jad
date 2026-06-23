@@ -1,0 +1,28 @@
+meta {
+  name: Add Query KeyPairResource from IdentityHub
+  type: http
+  seq: 6
+}
+
+put {
+  url: {{identityHubUrl}}/participants/{{tx_provider_context_id}}/keypairs
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "keyId": "test",
+    "privateKeyAlias": "alias",
+    "keyGeneratorParams": {
+      
+    }
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+}

@@ -1,0 +1,37 @@
+meta {
+  name: Create Dataspace Profile
+  type: http
+  seq: 5
+}
+
+post {
+  url: {{cpBaseUrl}}/v5beta/dataspaceprofiles
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2"
+    ],
+    "@type": "DataspaceProfile",
+    "name": "cx-neptune",
+    "protocol": {
+      "version": "2025-1",
+      "binding": "https",
+      "namespace": "https://w3id.org/dspace/2025/1/"
+    },
+    "jsonLdContextsUrl": [
+      "https://w3id.org/catenax/2025/9/policy/context.jsonld",
+      "https://w3id.org/catenax/2025/9/policy/odrl.jsonld",
+      "https://w3id.org/dspace/2025/1/context.jsonld",
+      "https://w3id.org/edc/dspace/v0.0.1"
+    ]
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,26 @@
+meta {
+  name: Add JsonLD context
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{cpBaseUrl}}/v5beta/jsonldcontexts
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2"
+    ],
+    "@type": "CachedJsonLdContext",
+    "url": "https://w3id.org/catenax/2025/9/policy/odrl.jsonld"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

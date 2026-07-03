@@ -1,0 +1,26 @@
+meta {
+  name: Delete Dataspace Profile
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{cpBaseUrl}}/v5beta/dataspaceprofiles/cx-neptune
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "@context": [
+      "https://w3id.org/edc/connector/management/v2"
+    ],
+    "@type": "DataspaceProfile",
+    "name": "cx-neptune"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

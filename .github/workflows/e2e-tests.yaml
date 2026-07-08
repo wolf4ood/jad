@@ -86,7 +86,7 @@ jobs:
           #
           # IfNotPresent uses the KinD-loaded JAD images; everything else is pulled from GHCR.
           helm upgrade --install core-platform oci://ghcr.io/eclipse-cfm/charts/core-platform-distribution \
-            --version 0.0.4 \
+            --version 0.0.5 \
             --namespace edc-v --create-namespace \
             -f platform-override-values.yaml \
             --set edc.issuerservice.imagePullPolicy=Never \
@@ -108,6 +108,14 @@ jobs:
           echo ""
           echo "Detailed pod descriptions:"
           kubectl describe pods -n edc-v
+          echo ""
+          echo "Logs of unready pods:"
+          for pod in $(kubectl get pods -n edc-v --no-headers | awk '$2 !~ /^([0-9]+)\/\1$/ && $3 != "Completed" {print $1}'); do
+            echo "--- logs: $pod ---"
+            kubectl logs -n edc-v "$pod" --all-containers --tail=200 || true
+            echo "--- previous logs: $pod ---"
+            kubectl logs -n edc-v "$pod" --all-containers --tail=200 --previous || true
+          done
 
       - name: "Run E2E Test"
         run: |
